@@ -1,0 +1,42 @@
+{
+  "app_name": "wechat_service",
+  "http_listen": "0.0.0.0:80",
+  "run_mode": "release",
+  "params_log": true,
+  "wx_auth_domain": "http://127.0.0.1",
+  "wx_url": "http://127.0.0.1",
+  "is_true": true,
+  "wx_template_time": 60,
+  "redis": {
+    "host": "127.0.0.1:3679",
+    "auth": "",
+    "pool_size": 30,
+    "min_idle_conn": 1,
+    "db": 0
+  },
+  "log": {
+    "open": true,
+    "type": "console",
+    "max_size": 32,
+    "max_age": 90,
+    "max_backups": 300
+  },
+  "wx_app": [
+    {
+      "wx_id": 10000,
+      "type": 0,
+      "name": "测试微信号",
+      "app_id": "#########",
+      "app_secret": "##########",
+      "token": "token",
+      "aes_key": "key"
+    }
+  ],
+  "applet": [
+    {
+      "name": "测试小程序",
+      "app_id": "######",
+      "app_secret": "xxxxx"
+    }
+  ]
+}
