@@ -1,7 +1,10 @@
 {
   "app_name": "wechat_service",
-  "http_listen": "0.0.0.0:80",
+  "port": "0.0.0.0:80",
+  "http_listen": "0.0.0.0:30080",
   "run_mode": "release",
+  "logger" : "/home/logs/app",
+  "version": "1.0.0",
   "params_log": true,
   "wx_auth_domain": "http://127.0.0.1",
   "wx_url": "http://127.0.0.1",

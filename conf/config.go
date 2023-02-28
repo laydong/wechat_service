@@ -19,17 +19,14 @@ type Config struct {
 type (
 	App struct {
 		AppName      string `json:"app_name"`
+		Port         string `json:"port"`
 		HttpListen   string `json:"http_listen"`
 		RunMode      string `json:"run_mode"`
-		AppUrl       string `json:"app_url"`
-		GinLog       string `json:"gin_log"`
+		Version      string `json:"version"`
+		Logger       string `json:"logger"`
 		WxAuthDomain string `json:"wx_auth_domain"`
 		WxUrl        string `json:"wx_url"`
 		IsTrue       bool   `json:"is_true"`
-		ParamsLog    bool   `json:"params_log"`
-		EnvApiLog    *bool  `json:"env_api_log"`
-		EnvDbLog     *bool  `json:"env_db_log"`
-		EnvSdkLog    *bool  `json:"env_sdk_log"`
 	}
 	WxApps struct {
 		WxId      int    `json:"wx_id"`
@@ -73,9 +70,10 @@ func InitConf(confPath string) *Config {
 		App: App{
 			AppName:      viper.GetString("app_name"),
 			RunMode:      viper.GetString("run_mode"),
-			AppUrl:       viper.GetString("app_url"),
+			Port:         viper.GetString("port"),
 			HttpListen:   viper.GetString("http_listen"),
-			ParamsLog:    viper.GetBool("params_log"),
+			Logger:       viper.GetString("logger"),
+			Version:      viper.GetString("version"),
 			WxAuthDomain: viper.GetString("wx_auth_domain"),
 			WxUrl:        viper.GetString("wx_url"),
 			IsTrue:       viper.GetBool("is_true"),
@@ -93,10 +91,10 @@ func InitConf(confPath string) *Config {
 	return c
 }
 
-func GetBaseConf() BaseConf   { return c.BaseConf }
+func GetBaseConf() App        { return c.App }
 func GetWxApps() []WxApps     { return c.WxApps }
 func GetApplet() []Applet     { return c.Applet }
 func GetRdbConf() Redis       { return c.Redis }
-func GetRunMode() string      { return c.BaseConf.RunMode }
-func GetAppName() string      { return c.BaseConf.AppName }
-func GetWxAuthDomain() string { return c.BaseConf.WxAuthDomain }
+func GetRunMode() string      { return c.App.RunMode }
+func GetAppName() string      { return c.App.AppName }
+func GetWxAuthDomain() string { return c.App.WxAuthDomain }
